@@ -14,7 +14,7 @@ import (
 func main() {
 	rand.Seed(time.Now().Unix()) //실행시마다 time객체로 시간값을 seed값으로 설정 >> 매 실행마다 다른 값 추출 유도
 	answer := rand.Intn(6) + 1   //1~6
-	fmt.Println(answer)
+	//fmt.Println(answer)
 
 	var win bool = false
 
@@ -48,6 +48,6 @@ func main() {
 	if win {
 		fmt.Println("당신이 이겼습니다!")
 	} else {
-		fmt.Println("당신이 패배했습니다!")
+		fmt.Printf("당신이 패배했습니다! 정답은 %d입니다.", answer)
 	}
 }
