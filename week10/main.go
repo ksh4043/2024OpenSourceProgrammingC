@@ -30,6 +30,10 @@ func main() {
 	// 1이 소수로 나오는 bug fix
 	if n <= 1 { // A Prime number is a natural number greater than 1 that has only 1 and itself as divisors
 		isPrime = false
+	} else if n == 2 {
+		isPrime = true
+	} else if n%2 == 0 { // All even numbers except 2 are not prime
+		isPrime = false
 	} else {
 		j := 2
 		for j <= int(math.Sqrt(float64(n))) {
