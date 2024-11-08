@@ -10,27 +10,23 @@ import (
 )
 
 func isPrime(n int) bool {
-	var isPrime bool = true
-	// 1이 소수로 나오는 bug fix
-
-	if n <= 1 { // A Prime number is a natural number greater than 1 that has only 1 and itself as divisors
-		isPrime = false
+	if n <= 1 {
+		return false
 	} else if n == 2 {
-		isPrime = true
-	} else if n%2 == 0 { // All even numbers except 2 are not prime
-		isPrime = false
+		return true
+	} else if n%2 == 0 {
+		return false
 	} else {
-		j := 3 // start value
-		//for j <= int(math.Sqrt(float64(n))) {
+		j := 3
 		for j*j <= n {
 			if n%j == 0 {
-				isPrime = false
-				break // performance up
+				return false
 			}
-			fmt.Printf("%d ", j) // Check j loop
-			j = j + 2            // increment
+			//fmt.Printf("%d ", j)
+			j += 2
 		}
 	}
+	return true
 }
 
 func main() {
