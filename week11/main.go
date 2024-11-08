@@ -1,9 +1,49 @@
 package main
 
-import "main.go/greeting"
+import (
+	"fmt"
+	"log"
 
-func main() { //greeting package는 main이 아니기 때문에 main 파일과 함수에서 호출해서 사용
-	//greeting.Hello("Inha")
-	//greeting.Hi("Harvard")
-	greeting.EnglishGreetings("Inha") //hello와 hi를 greeting 패키지 내부에서 호출하는 EnglishGreetings를 호출해서 사용
+	"main.go/keyboard"
+)
+
+func isPrime(n int) bool {
+	if n <= 1 {
+		return false
+	} else if n == 2 {
+		return true
+	} else if n%2 == 0 {
+		return false
+	} else {
+		j := 3
+		for j*j <= n {
+			if n%j == 0 {
+				return false
+			}
+			//fmt.Printf("%d ", j)
+			j += 2
+		}
+	}
+	return true
+}
+
+func main() {
+	fmt.Print("Input starting number : ")
+	n1, err := keyboard.GetInteger()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Print("Input end number : ")
+	n2, err := keyboard.GetInteger()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for j := n1; j <= n2; j++ {
+		if isPrime(j) {
+			fmt.Printf("%d ", j)
+		}
+	}
+
 }
