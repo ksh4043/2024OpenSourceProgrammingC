@@ -10,52 +10,59 @@ import (
 )
 
 func isPrime(n int) bool {
-	var isPrime bool = true
-	// 1이 소수로 나오는 bug fix
-
 	if n <= 1 { // A Prime number is a natural number greater than 1 that has only 1 and itself as divisors
-		isPrime = false
+		return false
 	} else if n == 2 {
-		isPrime = true
+		return true
 	} else if n%2 == 0 { // All even numbers except 2 are not prime
-		isPrime = false
+		return false
 	} else {
 		j := 3 // start value
 		//for j <= int(math.Sqrt(float64(n))) {
 		for j*j <= n {
 			if n%j == 0 {
-				isPrime = false
-				break // performance up
+				return false
 			}
-			fmt.Printf("%d ", j) // Check j loop
-			j = j + 2            // increment
+			//fmt.Printf("%d ", j) // Check j loop
+			j = j + 2 // increment
 		}
 	}
 }
 
 func main() {
 	in := bufio.NewReader(os.Stdin)
-	fmt.Print("Input Number : ")
-	i, err := in.ReadString('\n')
+	fmt.Print("Input Start Number : ")
+	a, err := in.ReadString('\n')
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	i = strings.TrimSpace(i)
-	n, err := strconv.Atoi(i)
+	a = strings.TrimSpace(a)
+	n1, err := strconv.Atoi(a)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	var isPrime bool = true
-	// 1이 소수로 나오는 bug fix
+	fmt.Print("Input End Number : ")
+	b, err := in.ReadString('\n')
 
-	if isPrime {
-		fmt.Printf("%d is prime number.", n)
-	} else {
-		fmt.Printf("%d is not prime number.", n)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	b = strings.TrimSpace(b)
+	n2, err := strconv.Atoi(b)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for j := n1; j <= n2; j++ {
+		if isPrime(j) {
+			fmt.Printf("%d ", j)
+		}
 	}
 
 }
