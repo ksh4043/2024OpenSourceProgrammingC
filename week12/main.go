@@ -3,18 +3,12 @@ package main
 import (
 	"fmt"
 
-	"github.com/headfirstgo/keyboard"
+	"reflect"
 )
 
-// git 주소에서 모듈을 가져올 때는 go get [파일주소]로 모듈을 다운로드 받고 사용
 func main() {
-	var gpas [3]float64
-	for i := 0; i < len(gpas); i++ {
-		fmt.Print("Input float number: ")
-		gpas[i], _ = keyboard.GetFloat()
-	}
-
-	for _, gpa := range gpas {
-		fmt.Println(gpa)
-	}
+	var gpa [5]float64 = [5]float64{3.5, 4.1, 4.5, 3.9, 4.23}
+	gpa_slice := gpa[1:4]
+	fmt.Println(gpa, reflect.TypeOf(gpa))
+	fmt.Println(gpa_slice, reflect.TypeOf(gpa_slice))
 }
