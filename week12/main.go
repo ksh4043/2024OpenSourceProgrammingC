@@ -8,9 +8,13 @@ import (
 func main() {
 	var scores [3]int
 	scores[1] = 90
-	fmt.Println(scores[1], scores[0]) // , scores[3])
-	fmt.Printf("%#v\n", scores)
-	fmt.Println(scores)
+	// fmt.Println(scores[1], scores[0]) // , scores[3])
+	// fmt.Printf("%#v\n", scores)
+	// fmt.Println(scores)
+	// for i := 0; i <= len(scores); i++ { // panic: runtime error: index out of range [3] with length 3
+	for i := 0; i < len(scores); i++ {
+		fmt.Printf("%d ", scores[i])
+	}
 
 	// var dates [3]time.Time
 	// dates[1] = time.Unix(1447920000, 0)
@@ -27,7 +31,15 @@ func main() {
 		time.Unix(1, 0),
 		time.Unix(1947200001, 0)} // comma unnecessary
 
-	fmt.Println((dates[0]), (dates[1]), (dates[2]))
-	fmt.Printf("%#v\n", dates)
-	fmt.Println(dates)
+	// fmt.Println((dates[0]), (dates[1]), (dates[2]))
+	// fmt.Printf("%#v\n", dates)
+	// fmt.Println(dates)
+
+	fmt.Println()
+	// for i, date := range dates {
+	// 	fmt.Println(i, date)
+	// }
+	for _, date := range dates {
+		fmt.Println(date)
+	}
 }
