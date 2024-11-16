@@ -2,44 +2,19 @@ package main
 
 import (
 	"fmt"
-	"time"
+
+	"github.com/headfirstgo/keyboard"
 )
 
+// git 주소에서 모듈을 가져올 때는 go get [파일주소]로 모듈을 다운로드 받고 사용
 func main() {
-	var scores [3]int
-	scores[1] = 90
-	// fmt.Println(scores[1], scores[0]) // , scores[3])
-	// fmt.Printf("%#v\n", scores)
-	// fmt.Println(scores)
-	// for i := 0; i <= len(scores); i++ { // panic: runtime error: index out of range [3] with length 3
-	for i := 0; i < len(scores); i++ {
-		fmt.Printf("%d ", scores[i])
+	var gpas [3]float64
+	for i := 0; i < len(gpas); i++ {
+		fmt.Print("Input float number: ")
+		gpas[i], _ = keyboard.GetFloat()
 	}
 
-	// var dates [3]time.Time
-	// dates[1] = time.Unix(1447920000, 0)
-	// fmt.Println(dates[1])
-	// dates := [3]time.Time{
-	// 	time.Unix(0, 0),
-	// 	time.Unix(1, 0),
-	// 	time.Unix(1947200001, 0), // need comma
-	// }
-	// fmt.Println((dates[0]), (dates[1]), (dates[2]))
-
-	dates := [3]time.Time{
-		time.Unix(0, 0),
-		time.Unix(1, 0),
-		time.Unix(1947200001, 0)} // comma unnecessary
-
-	// fmt.Println((dates[0]), (dates[1]), (dates[2]))
-	// fmt.Printf("%#v\n", dates)
-	// fmt.Println(dates)
-
-	fmt.Println()
-	// for i, date := range dates {
-	// 	fmt.Println(i, date)
-	// }
-	for _, date := range dates {
-		fmt.Println(date)
+	for _, gpa := range gpas {
+		fmt.Println(gpa)
 	}
 }
