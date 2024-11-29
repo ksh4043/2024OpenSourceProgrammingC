@@ -3,25 +3,27 @@ package main
 import "fmt"
 
 func main() {
-	// 이름, 나이 입력 -> Q 입력 시 종료
-	ages := make(map[string]int)
-
-	var name string
-	var age int
-
-	for {
-		fmt.Print("What is your name? (exit to 'q') ")
-		fmt.Scanln(&name)
-		if name == "q" || name == "Q" {
-			break
-		}
-		fmt.Print("Ur age? ")
-		fmt.Scanln(&age)
-
-		ages[name] = age
+	var student1 struct {
+		id   int
+		name string
+		gpa  float32
 	}
 
-	for name, age := range ages {
-		fmt.Printf("%s is %d years old\n", name, age)
+	student1.id = 202444091
+	student1.name = "김시현"
+	student1.gpa = 4.5
+
+	fmt.Println(student1.gpa)
+
+	var student2 struct {
+		id   int
+		name string
+		gpa  float32
 	}
+
+	student2.id = 202444021
+	student2.name = "아이다"
+	student2.gpa = 4.43
+
+	fmt.Println(student2.id)
 }
