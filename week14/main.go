@@ -2,26 +2,42 @@ package main
 
 import "fmt"
 
-type student struct { // 구조체를 type 키워드로 정의 -> 하나의 리터럴 타입이 됨
-	id   int
-	name string
-	gpa  float32
+type visitor struct {
+	age  int
+	cost int
+}
+
+func calc_cost(visitors []visitor) int {
+	// visitors : 구조체 슬라이스
+	total_cost := 0
+
+	for _, value := range visitors {
+		total_cost = total_cost + value.cost
+	}
+
+	return total_cost
 }
 
 func main() {
-	var student1 student
+	var num_visitors int
+	fmt.Println("How many visitors? ")
+	fmt.Scanln(&num_visitors)
 
-	student1.id = 202444091
-	student1.name = "김시현"
-	student1.gpa = 4.5
+	vs := make([]visitor, num_visitors) // create Slice
 
-	fmt.Println(student1.gpa)
+	for i := 0; i < num_visitors; i++ {
+		var age int
+		fmt.Print("Input age : ")
+		fmt.Scan(&age)
 
-	var student2 student
+		if age < 12 {
+			vs[i] = visitor{age: age, cost: 5000}
+		} else if age >= 12 && age < 65 {
+			vs[i] = visitor{age: age, cost: 10000}
+		} else {
+			vs[i] = visitor{age: age, cost: 7000}
+		}
+	}
 
-	student2.id = 202444021
-	student2.name = "아이다"
-	student2.gpa = 4.43
-
-	fmt.Println(student2.id)
+	fmt.Printf("Total price is %d", calc_cost(vs))
 }
